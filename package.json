@@ -1,0 +1,25 @@
+{
+  "name": "react-navigation-overlay",
+  "version": "1.0.0",
+  "description": "Don't we all wish that React Navigation had awesome Overlays like React Native Navigation ? Now it does 💪",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aspect-apps/react-navigation-overlay.git"
+  },
+  "keywords": [
+    "react-navigation",
+    "react-native",
+    "react-native-navigation",
+    "overlays"
+  ],
+  "author": "Aspect Apps Limited",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aspect-apps/react-navigation-overlay/issues"
+  },
+  "homepage": "https://github.com/aspect-apps/react-navigation-overlay#readme"
+}
