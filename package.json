@@ -4,7 +4,11 @@
   "description": "Don't we all wish that React Navigation had awesome Overlays like React Native Navigation ? Now it does 💪",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"Error: no test specified\"",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable",
+    "pre-commit": "lint-staged",
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
@@ -24,5 +28,14 @@
   "homepage": "https://github.com/aspect-apps/react-navigation-overlay#readme",
   "dependencies": {
     "react-native-modal": "^11.7.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "pinst": "^2.1.6",
+    "prettier": "^2.3.0",
+    "semantic-release": "^17.4.3"
   }
 }
