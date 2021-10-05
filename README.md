@@ -5,7 +5,7 @@ This library attempts to add support for "Overlays" to React Navigation similar 
 ## Install
 
 ```sh
-npm i react-navigation-overlay
+npm i @qeepsake/react-navigation-overlay
 ```
 
 ## Usage
