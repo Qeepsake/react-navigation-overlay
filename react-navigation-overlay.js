@@ -12,11 +12,9 @@ export const ReactNavigationOverlay = ({ style, animationIn="slideInUp", animati
     useEffect(() => Overlay.register(thisRef), [thisRef]);
     useImperativeHandle(thisRef, () => ({
         show: (component, props = {}) => {
-            InteractionManager.runAfterInteractions(() => {
-                ComponentJsxRef.current = component;
-                setComponentPropsRef(props);
-                setIsVisible(true)
-            });            
+            ComponentJsxRef.current = component;
+            setComponentPropsRef(props);
+            setIsVisible(true)
         },
         close: () => {
             setIsVisible(false);
