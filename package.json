@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/Qeepsake/react-navigation-overlay#readme",
   "dependencies": {
-    "react-native-modal": "^11.7.0"
+    "react-native-modal": "^11.10.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
