@@ -23,6 +23,7 @@ yarn-error.log*
 .idea
 .editorconfig
 coverage
+node_modules
 
 #examples (for now)
 example
