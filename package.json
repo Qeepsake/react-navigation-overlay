@@ -1,10 +1,14 @@
 {
   "name": "@qeepsake/react-navigation-overlay",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "Don't we all wish that React Navigation had awesome Overlays like React Native Navigation ? Now it does 💪",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "prepare": "run-s build",
+    "test": "jest",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "pre-commit": "lint-staged",
@@ -27,15 +31,25 @@
   },
   "homepage": "https://github.com/Qeepsake/react-navigation-overlay#readme",
   "dependencies": {
-    "react-native-modal": "^11.10.0"
+    "react-native-modal": "^13.0.1"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@types/react": "^18.2.29",
+    "@typescript-eslint/parser": "^4.26.1",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
+    "microbundle-crl": "^0.13.10",
     "pinst": "^2.1.6",
     "prettier": "^2.3.0",
-    "semantic-release": "^17.4.3"
+    "react": "18.2.0",
+    "react-native": "0.72.4",
+    "semantic-release": "^17.4.3",
+    "npm-run-all": "^4.1.5"
   }
 }
