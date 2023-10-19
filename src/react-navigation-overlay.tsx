@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { StyleProp, ViewStyle } from "react-native";
 import { Overlay, OverlayRefHandle } from "./overlay";
-import Modal, { ReactNativeModal } from "react-native-modal";
+import Modal, { ModalProps } from "react-native-modal";
 
 type AniamtionInType =
   | "bounce"
@@ -136,28 +136,30 @@ type AnimationOutType =
   | "zoomOutLeft"
   | "zoomOutRight";
 
-interface IReactNavigationOverlayProps extends ReactNativeModal {
+interface IReactNavigationOverlayProps extends ModalProps {
   style?: StyleProp<ViewStyle>;
   animationIn: AniamtionInType;
   animationOut: AnimationOutType;
-  onModalHide?: () => void;
+  onModalHidden?: () => void;
 }
 
 export const ReactNavigationOverlay = ({
   style,
   animationIn = "slideInUp",
   animationOut = "slideOutDown",
-  onModalHide,
+  onModalHidden,
   ...props
 }: IReactNavigationOverlayProps) => {
   const thisRef = React.createRef<OverlayRefHandle>();
-  const ComponentJsxRef = useRef<ReactElement | null>(null);
+  const ComponentJsxRef = useRef<((...props: any) => ReactElement) | null>(
+    null
+  );
   const [componentPropsRef, setComponentPropsRef] = useState({});
   const [isVisible, setIsVisible] = useState(false);
   /** Effects */
   useEffect(() => Overlay.register(thisRef), [thisRef]);
   useImperativeHandle(thisRef, () => ({
-    show: (component: ReactElement, props = {}) => {
+    show: (component: (...props: any) => ReactElement, props = {}) => {
       ComponentJsxRef.current = component;
       setComponentPropsRef(props);
       setIsVisible(true);
@@ -170,6 +172,7 @@ export const ReactNavigationOverlay = ({
   if (ComponentJsxRef.current) {
     return (
       <Modal
+        {...props}
         isVisible={isVisible}
         style={[{ flex: 1, margin: 0 }, style]}
         animationIn={animationIn}
@@ -177,11 +180,10 @@ export const ReactNavigationOverlay = ({
         onModalHide={() => {
           ComponentJsxRef.current = null;
           setComponentPropsRef({});
-          if (onModalHide) onModalHide();
+          if (onModalHidden) onModalHidden();
         }}
-        {...props}
       >
-        {React.cloneElement(ComponentJsxRef.current, componentPropsRef)}
+        <ComponentJsxRef.current {...componentPropsRef} />
       </Modal>
     );
   }
