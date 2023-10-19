@@ -1,7 +1,7 @@
 import { ReactElement, RefObject } from "react";
 
 export interface OverlayRefHandle {
-  show: (component: ReactElement, props?: any) => void;
+  show: (component: (...props: any) => ReactElement, props?: any) => void;
   close: () => void;
 }
 
@@ -12,7 +12,7 @@ export const Overlay = {
   register: (ref: RefObject<OverlayRefHandle>) => {
     OverlayRef = ref.current;
   },
-  show: (component: ReactElement, props: any) => {
+  show: (component: (...props: any) => ReactElement, props: any) => {
     OverlayRef?.show(component, props);
   },
   close: () => {
